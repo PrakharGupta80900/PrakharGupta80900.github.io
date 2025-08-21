@@ -1,0 +1,423 @@
+body {
+    font-family: 'Times New Roman';
+    background: url('images/g.jpg') center center no-repeat;
+    background-size: cover;
+    color:#ffffe4;
+    position: relative;
+
+}
+
+/* Overlay to reduce background image opacity to 20% */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(16, 7, 62, 0.7); /* 80% black overlay, so image is 20% visible */
+    z-index: -1;
+    pointer-events: none;
+}
+section:hover{
+    color:rgb(218, 218, 198);
+}
+
+.profile{
+    border-radius:90%;
+    width:180px;
+    height:210px;
+    margin-top: 50px;
+    margin-left: 50px;
+    border: 5px solid white;
+}
+h1{
+    text-align: center;
+    font-size:50px;
+}
+#img{
+    display: flex;
+}
+#intro{
+    margin-top:70px;
+    margin-left:50px;
+    font-size:29px;
+}
+
+nav{
+    background-color: #003270;
+    word-spacing:2em;
+    font-size:1.3em;
+    text-align:end;
+    padding-right:30px;
+    border:1.5px solid white;
+    border-radius:90px;
+    height:40px;
+    padding-top: 11px;
+}
+nav a{
+    color:lightgray;
+}
+nav a:hover{
+    color:yellow;
+}
+
+#About{
+    text-align: center;
+    scroll-margin-top:200px;
+}
+#About p{
+    font-size:30px;
+    text-align: center;
+    padding-left:70px;
+    padding-right:70px;
+}
+#About h2{
+    font-size:3em;
+}
+
+#education h2{
+    font-size:3em;
+    text-align: center
+}
+
+#education{
+    scroll-margin-top: 90px;
+}
+
+#education li{
+    font-size:25px;
+    margin-left:30px;
+}
+
+#Skills h2{
+    font-size:3em;
+    text-align: center;
+}
+#Skills h3{
+    font-size:30px;
+}
+#Skills p{
+    font-size:20px;
+}
+#Skills ol li::marker{
+    font-size:25px;
+    text-align: center;
+    
+}
+#Skills li{
+    margin-left:30px;
+}
+
+#Skills p{
+    font-size:20px;
+}
+#experience li{
+    margin-left:30px;
+
+}
+#experience h2{
+    font-size: 3em;
+    text-align: center;
+}
+#experience ol li h3{
+    font-size: 30px;
+}
+#experience ol li::marker{
+    font-size:25px;
+}
+
+#experience ul li{
+    font-size:20px;
+}
+#experience{
+    scroll-margin-top:200px
+}
+
+#projects h2{
+    font-size:3em;
+    text-align: center;
+}
+#projects h3{
+    font-size:30px;
+}
+#projects ol li::marker{
+    font-size:25px;
+    text-align: center;
+}
+
+#projects ul li{
+    font-size:20px;
+}
+
+#projects {
+    scroll-margin-top:200px;
+}
+
+#schemangam li{
+    margin-left: 30px;
+}
+#certifications h2{
+    font-size:3em;
+    text-align: center;
+}
+
+#certifications li{
+    font-size:25px;
+    margin-left: 30px;
+}
+#certifications{
+    scroll-margin-top:200px;
+}
+
+#achievements h2{
+    font-size:3em;
+    text-align: center;
+}
+#achievements li{
+    font-size: 25px;
+    margin-left:30px;
+}
+#achievements{
+    scroll-margin-top:200px;
+}
+
+footer img {
+    border-radius: 90%;
+    width: 60px;
+    height: 60px;
+    margin-right: 50px; /* Add gap between images */
+}
+
+footer{
+    text-align: center;
+}
+
+#connect h2{
+    font-size:3em;
+    text-align: center;
+}
+footer p{
+    font-size:20px;
+    text-align: center;
+}
+input{
+    height: 200px;
+    width: 700px;
+    text-align:center;
+    font-size:15px;
+    background-color: whitesmoke;
+}
+
+u {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 10px;     /* move underline away from text */
+}
+
+hr{
+    border-top:3px solid #ffffe4;
+}
+section {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.7s, transform 0.7s;
+}
+
+section:target {
+    opacity: 1;
+    transform: translateX(0);
+    animation: slideInLeft 1s; /* 0.3s delay added */
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-80px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+
+/* ==== Enhancements Added ==== */
+
+/* General text & background polish */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+}
+
+/* Headings with gradient */
+h1, h2, h3 {
+    background: linear-gradient(to right, #ffdd00, #ffaa00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Profile picture glow */
+.profile {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.profile:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.7);
+}
+
+/* Navbar polish */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    background: linear-gradient(90deg, #003270, #0050a0);
+    border: none;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+}
+nav a {
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -5px;
+    width: 0%; height: 2px;
+    background: yellow;
+    transition: width 0.3s;
+}
+nav a:hover {
+    color:white;
+}
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Section cards */
+section {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 12px;
+    margin: 40px auto;
+    width: 80%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+}
+
+/* List items animation */
+li {
+    transition: transform 0.2s ease;
+}
+li:hover {
+    transform: translateX(10px);
+    color: #ffd54f;
+}
+
+/* Footer icons glow */
+footer img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+footer img:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+}
+
+/* Buttons */
+button {
+    background: linear-gradient(90deg, #ff9800, #ff5722);
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+/* Input field */
+input {
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+input:focus {
+    outline: none;
+    border: 2px solid #ffaa00;
+    box-shadow: 0 0 10px rgba(255,170,0,0.5);
+}
+
+
+
+/* ==== Palette 1: Tech Professional (Blue + Cyan + White) ==== */
+body::before {
+    background: rgba(13, 17, 23, 0.95); /* dark navy overlay */
+}
+nav {
+    background: linear-gradient(90deg, #0050a0, #0077ff);
+}
+nav a::after {
+    background: #00e0ff;
+}
+button {
+    background: linear-gradient(90deg, #0077ff, #00e0ff);
+}
+input:focus {
+    border: 2px solid #00e0ff;
+    box-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+}
+
+
+
+/* ==== Palette 2: Modern Gradient (Purple + Pink + Neon) ==== */
+body::before {
+    background: rgba(26, 26, 46, 0.95); /* dark indigo overlay */
+}
+nav {
+    background: linear-gradient(90deg, #7928ca, #ff0080);
+}
+nav a::after {
+    background: #ff80bf;
+}
+button {
+    background: linear-gradient(90deg, #7928ca, #ff0080);
+}
+input:focus {
+    border: 2px solid #ff0080;
+    box-shadow: 0 0 10px rgba(255, 0, 128, 0.5);
+}
+
+
+
+/* ==== Palette 3: Elegant Gold (Dark + Gold Accent) ==== */
+body::before {
+    background: rgba(15, 15, 15, 0.95); /* dark overlay */
+}
+nav {
+    background: #aba596;
+    background: linear-gradient(90deg,rgba(171, 165, 150, 1) 0%, rgba(148, 145, 132, 1) 0%, rgba(227, 220, 118, 1) 50%, rgba(150, 150, 135, 1) 100%);
+}
+nav a::after {
+    background: #ffcc00;
+}
+button {
+    background: linear-gradient(90deg, #d4af37, #ffcc00);
+}
+input:focus {
+    border: 2px solid #d4af37;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
