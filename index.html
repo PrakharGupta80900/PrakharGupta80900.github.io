@@ -1,221 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K1KW0N528P"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Prakhar Gupta — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --amber:#EF9F27;--amber-dim:#BA7517;--amber-glow:#FAC775;
+  --bg:#0A0A0A;--bg2:#111111;--bg3:#181818;--bg4:#222222;
+  --text:#F5F0E8;--text2:#A89F8C;--text3:#6B6459;
+  --green:#22C55E;--red:#EF4444;
+  --font-mono:'JetBrains Mono',monospace;
+  --font-sans:'Space Grotesk',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--amber-dim);border-radius:2px}
 
-    gtag('config', 'G-K1KW0N528P');
-    </script>
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1e1e1e;background:rgba(10,10,10,0.9);backdrop-filter:blur(10px)}
+.nav-logo{font-family:var(--font-mono);color:var(--amber);font-weight:700;font-size:1rem;letter-spacing:0.05em}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:0.85rem;font-family:var(--font-mono);letter-spacing:0.05em;transition:color 0.2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--amber);transition:width 0.3s}
+.nav-links a:hover{color:var(--amber)}
+.nav-links a:hover::after{width:100%}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:6rem 2rem 4rem;max-width:1100px;margin:0 auto;position:relative}
+.hero-tag{font-family:var(--font-mono);color:var(--amber);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.5rem}
+.dot-pulse{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.hero-name{font-size:clamp(3rem,8vw,7rem);font-weight:700;line-height:1;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.hero-name span.amber{color:var(--amber)}
+.typewriter-line{font-family:var(--font-mono);font-size:clamp(1rem,2.5vw,1.4rem);color:var(--text2);margin-bottom:2rem;min-height:2em}
+.cursor{display:inline-block;width:2px;height:1.2em;background:var(--amber);margin-left:2px;animation:blink 1s step-end infinite;vertical-align:text-bottom}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-desc{max-width:600px;color:var(--text2);font-size:1rem;line-height:1.8;margin-bottom:3rem}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--amber);color:#000;padding:0.75rem 2rem;font-family:var(--font-mono);font-size:0.85rem;font-weight:700;text-decoration:none;letter-spacing:0.05em;transition:all 0.2s;border:none;cursor:pointer;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));display:inline-block}
+.btn-primary:hover{background:var(--amber-glow);transform:translateY(-2px)}
+.btn-secondary{background:transparent;color:var(--amber);padding:0.75rem 2rem;font-family:var(--font-mono);font-size:0.85rem;font-weight:700;text-decoration:none;letter-spacing:0.05em;transition:all 0.2s;border:1px solid var(--amber);cursor:pointer;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));display:inline-block}
+.btn-secondary:hover{background:rgba(239,159,39,0.1);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:2rem;border-top:1px solid #1e1e1e}
+.stat-item .num{font-family:var(--font-mono);font-size:2rem;font-weight:700;color:var(--amber)}
+.stat-item .lbl{font-size:0.75rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.1em;margin-top:0.2rem}
+.hero-grid-bg{position:absolute;top:0;left:0;right:0;bottom:0;background-image:linear-gradient(rgba(239,159,39,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(239,159,39,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.corner-decoration{position:absolute;top:6rem;right:2rem;font-family:var(--font-mono);font-size:0.7rem;color:var(--text3);text-align:right;line-height:2}
+
+.marquee-section{background:var(--amber);padding:0.75rem 0;overflow:hidden}
+.marquee-track{display:flex;width:max-content;animation:marquee 25s linear infinite}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.marquee-item{font-family:var(--font-mono);font-size:0.8rem;font-weight:700;color:#000;padding:0 2.5rem;white-space:nowrap;display:flex;align-items:center;gap:1rem;text-transform:uppercase;letter-spacing:0.08em}
+
+section{padding:6rem 2rem;max-width:1100px;margin:0 auto}
+.section-label{font-family:var(--font-mono);font-size:0.75rem;color:var(--amber);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.75rem}
+.section-label::before{content:'';display:block;width:24px;height:1px;background:var(--amber)}
+.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:700;margin-bottom:3rem;letter-spacing:-0.02em}
+
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:#1e1e1e;border:1px solid #1e1e1e}
+.skill-card{background:var(--bg);padding:1.5rem;transition:background 0.2s}
+.skill-card:hover{background:var(--bg3)}
+.skill-cat{font-family:var(--font-mono);font-size:0.7rem;color:var(--amber);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:1rem}
+.skill-tags{display:flex;flex-wrap:wrap;gap:0.5rem}
+.skill-tag{font-family:var(--font-mono);font-size:0.75rem;color:var(--text2);background:var(--bg3);padding:0.3rem 0.75rem;border:1px solid #2a2a2a;letter-spacing:0.05em;transition:all 0.2s;cursor:default}
+.skill-tag:hover{color:var(--amber);border-color:var(--amber);background:rgba(239,159,39,0.05)}
+
+.projects-grid{display:grid;gap:1px;background:#1e1e1e;border:1px solid #1e1e1e}
+.project-card{background:var(--bg);padding:2rem;transition:background 0.3s;position:relative;overflow:hidden}
+.project-card:hover{background:var(--bg3)}
+.project-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--amber);transition:height 0.3s}
+.project-card:hover::before{height:100%}
+.project-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem}
+.project-num{font-family:var(--font-mono);font-size:0.75rem;color:var(--text3)}
+.project-links{display:flex;gap:0.75rem}
+.project-link{font-family:var(--font-mono);font-size:0.75rem;color:var(--amber);text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s}
+.project-link:hover{border-color:var(--amber)}
+.project-name{font-size:1.3rem;font-weight:700;margin-bottom:0.75rem;letter-spacing:-0.01em}
+.project-desc{color:var(--text2);font-size:0.9rem;line-height:1.7;margin-bottom:1.5rem}
+.project-stack{display:flex;flex-wrap:wrap;gap:0.5rem}
+.stack-tag{font-family:var(--font-mono);font-size:0.7rem;color:var(--amber-dim);padding:0.2rem 0.6rem;border:1px solid var(--amber-dim);opacity:0.7}
+
+.exp-item{padding:2rem 0;border-bottom:1px solid #1e1e1e;display:grid;grid-template-columns:200px 1fr;gap:2rem}
+.exp-item:last-child{border-bottom:none}
+.exp-date{font-family:var(--font-mono);font-size:0.8rem;color:var(--text3)}
+.exp-company{font-family:var(--font-mono);font-size:0.75rem;color:var(--amber);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.05em}
+.exp-role{font-size:1.1rem;font-weight:600;margin-bottom:0.75rem}
+.exp-points{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+.exp-points li{font-size:0.9rem;color:var(--text2);padding-left:1.25rem;position:relative}
+.exp-points li::before{content:'›';position:absolute;left:0;color:var(--amber)}
+
+.ach-list{display:flex;flex-direction:column;gap:0;border:1px solid #1e1e1e}
+.ach-item{padding:1.25rem 1.5rem;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:1rem;transition:background 0.2s}
+.ach-item:hover{background:var(--bg3)}
+.ach-item:last-child{border-bottom:none}
+.ach-icon{font-family:var(--font-mono);font-size:0.75rem;color:var(--amber);min-width:48px;text-align:center}
+.ach-text{font-size:0.9rem;color:var(--text2)}
+.ach-badge{font-family:var(--font-mono);font-size:0.7rem;color:#000;background:var(--amber);padding:0.2rem 0.6rem;margin-left:auto;white-space:nowrap}
+
+.contact-box{border:1px solid #1e1e1e;padding:3rem;text-align:center;position:relative;overflow:hidden}
+.contact-box::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:linear-gradient(90deg,transparent,var(--amber),transparent)}
+.contact-title{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:700;margin-bottom:1rem;letter-spacing:-0.02em}
+.contact-sub{color:var(--text2);margin-bottom:2.5rem;font-size:0.95rem}
+.contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:1.5rem}
+.contact-link{font-family:var(--font-mono);font-size:0.85rem;color:var(--text2);text-decoration:none;display:flex;align-items:center;gap:0.5rem;border:1px solid #2a2a2a;padding:0.6rem 1.2rem;transition:all 0.2s}
+.contact-link:hover{color:var(--amber);border-color:var(--amber);background:rgba(239,159,39,0.05)}
+
+footer{border-top:1px solid #1e1e1e;padding:2rem;text-align:center;font-family:var(--font-mono);font-size:0.75rem;color:var(--text3)}
+footer span{color:var(--amber)}
+
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+.glitch{position:relative}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%;background:var(--bg)}
+.glitch::before{color:var(--amber-glow);animation:glitch1 4s infinite;clip-path:polygon(0 30%,100% 30%,100% 50%,0 50%)}
+.glitch::after{color:#22D3EE;animation:glitch2 4s infinite;clip-path:polygon(0 60%,100% 60%,100% 75%,0 75%)}
+@keyframes glitch1{0%,90%,100%{transform:translate(0)}92%{transform:translate(-3px,1px)}94%{transform:translate(3px,-1px)}96%{transform:translate(-2px,2px)}98%{transform:translate(2px,-2px)}}
+@keyframes glitch2{0%,90%,100%{transform:translate(0)}92%{transform:translate(3px,-2px)}94%{transform:translate(-2px,1px)}96%{transform:translate(2px,2px)}98%{transform:translate(-1px,-1px)}}
+
+.skill-band{padding:1.5rem 0;overflow:hidden;background:var(--bg2);border-top:1px solid #1e1e1e;border-bottom:1px solid #1e1e1e}
+.skill-band-track{display:flex;width:max-content;animation:skill-scroll 30s linear infinite}
+.skill-band-track.rev{animation-direction:reverse}
+@keyframes skill-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.skill-band-item{font-family:var(--font-mono);font-size:0.85rem;color:var(--text3);padding:0 2rem;white-space:nowrap;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s}
+.skill-band-item:hover{color:var(--amber)}
+.skill-band-dot{width:4px;height:4px;border-radius:50%;background:var(--amber-dim);display:inline-block}
+
+@media(max-width:700px){
+  .exp-item{grid-template-columns:1fr}
+  .hero-stats{gap:1.5rem;flex-wrap:wrap}
+  .hero-name{font-size:3rem}
+  nav{padding:1rem}
+  .nav-links{gap:1rem}
+  .corner-decoration{display:none}
+}
+</style>
 </head>
 <body>
-    <header>
-        <br>
-        <br>
-        <h1><u>WELCOME TO MY PORTFOLIO</u></h1>
-        <section id="img">
-            <img src="images/profile.jpg" class="profile" alt="Profile Image">
-            <div id="intro">
-                <p>Hi! I'm <b>Prakhar Gupta</b></p>
-                <p>I am a <b>Web</b> and <b>Software Developer</b>, eager to build strong foundations in <b>Data Science.</b></p>
-            </div>
-        </section>
-        <br>
-        <br>
-        <nav>
-            <a href="#About">About</a>
-            <a href="#education">Education</a>
-            <a href="#Skills">Skills</a>
-            <a href="#experience">Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#achievements">Achievements</a>
-            <a href="#connect">Connect</a>
-        </nav>
-    </header>
-    <br>
-    <br>
-    <main>
-        <section id="About">
-            <h2><u>About Me</u></h2>
-            <p>I am a passionate Tech enthusiast with experience in Web and Software development, building real-world projects. Currently a pre-final-year engineering grad, eager to apply my skills in the Tech Industry. From building scalable web solutions to software development, I believe in learning by doing on real world projects—and I'm always hungry for challenges that push my boundaries. Whether it's crafting a smart solution, collaborating on an innovative project, or diving deep into the next big thing in tech, I bring enthusiasm, commitment, and a touch of creative chaos to the table. Beyond code, I’m a lifelong learner, a design thinker, and someone who believes that technology, when done right, can change lives. <b>Let’s create something meaningful</b>.</p>
-        </section>
 
-        <br>
-        <hr>
-        <br>
+<nav>
+  <div class="nav-logo">PG.dev</div>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
+<section class="hero" style="max-width:1100px;margin:0 auto;position:relative">
+  <div class="hero-grid-bg"></div>
+  <div class="corner-decoration" id="corner-code"></div>
+  <div class="hero-tag">
+    <span class="dot-pulse"></span>
+    Available for internship &amp; junior roles
+  </div>
+  <h1 class="hero-name glitch" data-text="PRAKHAR GUPTA">PRAKHAR <span class="amber">GUPTA</span></h1>
+  <div class="typewriter-line">
+    <span id="typewriter-text"></span><span class="cursor"></span>
+  </div>
+  <p class="hero-desc">
+    Full-Stack Developer (B.Tech CSE '27) building production MERN stack applications. Shipped an AI travel startup and a live event portal serving 600+ users. Passionate about crafting systems that scale.
+  </p>
+  <div class="hero-ctas">
+    <a class="btn-primary" href="#projects">View Projects</a>
+    <a class="btn-secondary" href="#contact">Get In Touch</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item"><div class="num" id="count-users">0+</div><div class="lbl">Users Served</div></div>
+    <div class="stat-item"><div class="num" id="count-projects">0</div><div class="lbl">Live Projects</div></div>
+    <div class="stat-item"><div class="num" id="count-stack">0+</div><div class="lbl">Tech Stack Items</div></div>
+    <div class="stat-item"><div class="num" id="count-hacker">0+</div><div class="lbl">HackerRank Solved</div></div>
+  </div>
+</section>
 
-        <section id="education">
-            <h2><u>Education</u></h2>
-            <br>
-            <ol type="i">
-                <li>
-                    <h3><u>Bachelor's of Technology</u> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Nov'2023 - Present</h3>
-                    <p>Shri Ram Murti Smarak College of Engineering, Technology and Research</p>
-                </li>
-                <br>
-                <li>
-                    <h3><u>Senior Secondary</u> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; April'2021 - 2022</h3>
-                    <p>Takshashila Public School, Shahjahanpur &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 86%</p>
-                </li>
-                <br>
-                <li>
-                    <h3><u>High School</u> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;April'2019 - 2020</h3>
-                    <p>Takshashila Public School, Shahjahanpur &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;86%</p>
-                </li>
-            </ol>
-        </section>
-        <br>
-        <hr>
-        <br>
+<div class="marquee-section">
+  <div class="marquee-track" id="marquee-track"></div>
+</div>
 
-        <section id="Skills">
-            <h2><u>Skills</u></h2>
-            <br>
-            <ol type="i">
-                <li>
-                    <h3>Languages:</h3>
-                    <p>Java, HTML, CSS, JavaScript, Python</p>
-                </li>
-                <li>
-                    <h3>Frameworks:</h3>
-                    <p>Flask, Django, React-js, Express-js, Node-js</p>
-                </li>
-                <li>
-                    <h3>Cloud/Tools:</h3>
-                    <p>AWS, GCP, Rest API's, Postman</p>
-                </li>
-                <li>
-                    <h3>Core Concepts:</h3>
-                    <p>Data Structures and Algorithms, OOPs, Operating System, DBMS</p>
-                </li>
-                <li>
-                    <h3>Libraries:</h3>
-                    <p>Pandas, Numpy, Scikitlearn, Keras, Pytorch, Matplotlib</p>
-                </li>
-                <li>
-                    <h3>Soft Skills:</h3>
-                    <p>Teamwork, Event management, Problem Solving</p>
-                </li>
-            </ol>
+<div class="skill-band">
+  <div class="skill-band-track" id="band1"></div>
+</div>
 
-        </section>
-        <br>
-        <hr>
-        <br>
+<div class="skill-band" style="padding:0.75rem 0;margin-top:0">
+  <div class="skill-band-track rev" id="band2"></div>
+</div>
 
+<section id="skills" class="fade-up">
+  <div class="section-label">Technical Arsenal</div>
+  <h2 class="section-title">Skills &amp; Technologies</h2>
+  <div class="skills-grid" id="skills-grid"></div>
+</section>
 
-        <section id="experience">
-            <h2>
-                <u>Experience</u>
-            </h2>
-            <br>
-            <div id="executive"></div>
-                <ol type="i">
-                    <li><h3>Executive &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;Nov'24 - Present</h3></li>
-                    <p>
-                        <ul>
-                            <li>Verve Club , SRMS TRUST INSTITUTIONS BAREILLY(229401)</li>
-                            <li>Coordinated various events at college including tech and cultural fest. </li>
-                            <li>Contributed to organizing welfare activities , increasing student participation by 30%</li>
-                        </ul>
-                    </p>
-                </ol>
-            </div>
-        </section>
-        <br>
-        <hr>
-        <br>
+<section id="projects" class="fade-up" style="padding-top:0">
+  <div class="section-label">Work</div>
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid" id="projects-grid"></div>
+</section>
 
-        <section id="projects">
-            <h2>
-                <u>Projects</u>
-            </h2>
-            <br>
-            <div id="schemangam">
-                <ol type="i">
-                    <li><h3>Schemangam</h3></li>
-                    <p>
-                        <ul>
-                            <li>Designed a web app that provides one stop solution for all goverment schemes.</li>
-                            <li>Integrated an AI chatbot that helps users for better understanding of scheme.</li>
-                            <li>Focused on accessibility , UI simplicity and multi language capability.</li>
-                        </ul>
-                    </p>
-                </ol>
-            </div>
+<section id="experience" class="fade-up">
+  <div class="section-label">Timeline</div>
+  <h2 class="section-title">Experience</h2>
+  <div id="exp-list"></div>
+</section>
 
-        </section>
-        <br>
-        <hr>
-        <br>
+<section id="achievements" class="fade-up">
+  <div class="section-label">Recognition</div>
+  <h2 class="section-title">Achievements</h2>
+  <div class="ach-list" id="ach-list"></div>
+</section>
 
-        <section id="certifications">
-            <h2>
-                <u>Certifications</u>
-            </h2>
-            <br>
-            <ol type="i">
-                <li>Summer Analytics 2025 by IIT GUWAHATI</li>
-                <li>Complete Data Science , Machine learning , DL , NLP bootcamp by Krish Naik on Udemy</li>
-                <li>Data Science job Stimulation by Forage</li>
-                <li>Data Analyst job stimulation by Forage</li>
-            </ol>
-        </section>
-        <br>
-        <hr>
-        <br>
+<section id="contact" class="fade-up">
+  <div class="contact-box">
+    <div class="section-label" style="justify-content:center;margin-bottom:1.5rem">Let's Connect</div>
+    <h2 class="contact-title">Ready to build something?</h2>
+    <p class="contact-sub">Open to SDE internships and junior full-stack developer roles. Let's talk.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:prakhargupta448@gmail.com">✉ prakhargupta448@gmail.com</a>
+      <a class="contact-link" href="https://linkedin.com/in/prakhar-gupta80900" target="_blank">⊞ LinkedIn</a>
+      <a class="contact-link" href="https://github.com/PrakharGupta80900" target="_blank">◈ GitHub</a>
+      <a class="contact-link" href="tel:+918090016216">☎ +91 80900 16216</a>
+    </div>
+  </div>
+</section>
 
-        <section id="achievements">
-            <h2>
-                <u>Achievements</u>
-            </h2>
-            <br>
-            <ol type="i">
-                <li>U-12 District Level Roller Skating Player</li>
-                <li>&#9733 3 in python at HackerRank </li>
-                <li>&#9733 3 in Java at HackerRank</li>
-                <li>Solved 200+ questions on CodeChef</li>
-            </ol>
-        </section>
-        <br>
-        <hr>
-        <br>
+<footer>
+  <p>Designed &amp; Built by <span>Prakhar Gupta</span> · B.Tech CSE @ SRMS CET, Bareilly · 2024</p>
+</footer>
 
+<script>
+const marqueeItems=['MERN Stack','React.js','Node.js','Next.js','MongoDB','PostgreSQL','AWS EC2','OpenAI API','TypeScript','JWT Auth','RESTful API','OAuth 2.0','Supabase','Express.js','Git','CI/CD','IoT Dev','Raspberry Pi'];
+const track=document.getElementById('marquee-track');
+[...marqueeItems,...marqueeItems].forEach(item=>{
+  const el=document.createElement('span');
+  el.className='marquee-item';
+  el.innerHTML=`${item} <span style="color:rgba(0,0,0,0.4)">✦</span>`;
+  track.appendChild(el);
+});
 
-    </main>
+const band1Items=['JavaScript ES6+','TypeScript','Java','HTML5','CSS3','SQL','React.js','Node.js','Express.js','Next.js','MongoDB','PostgreSQL','MySQL','Supabase'];
+const band2Items=['AWS EC2','AWS S3','Git','GitHub','Linux','Figma','Postman','Thunder Client','OpenAI API','Perplexity API','Brevo','Weather API','JWT','OAuth 2.0','Raspberry Pi','ESP32','Arduino'];
+function buildBand(id,items){
+  const el=document.getElementById(id);
+  [...items,...items,...items].forEach(item=>{
+    const span=document.createElement('span');
+    span.className='skill-band-item';
+    span.innerHTML=`<span class="skill-band-dot"></span>${item}`;
+    el.appendChild(span);
+  });
+}
+buildBand('band1',band1Items);
+buildBand('band2',band2Items);
 
-    <footer>
-        <section id="connect">
-            <h2>
-                <u>Connect</u>
-            </h2>
-                <a href="https://www.linkedin.com/in/prakhar-gupta80900"><img src="images/linkedin.png"></a>
-                <a href="https://github.com/prakhargupta80900"><img src="images/github.jpg"></a>
-                <a href="mailto:prakhargupta448@gmail.com"><img src="images/mail.jpg" alt="gmail"></a>
-        </section>
-        <br>
-        <br>
-        <br>
-        <form action="/action">
-            <input type="text" placeholder="Enter your valuable feedback here..">
-            <br>
-            <br>
-            <button>Submit</button>
-            <br>
-        </form>
-        <p>2025 My Portfolio</p>
-    </footer>
-    
-    
+const typewriterLines=['Full-Stack Developer → MERN Stack','Building AI-Powered Products','AWS · RESTful APIs · Auth Systems','B.Tech CSE @ SRMS, Bareilly (2027)'];
+let lineIdx=0,charIdx=0,deleting=false;
+function typeEffect(){
+  const target=document.getElementById('typewriter-text');
+  const line=typewriterLines[lineIdx];
+  if(!deleting){target.textContent=line.slice(0,++charIdx);if(charIdx===line.length){deleting=true;setTimeout(typeEffect,1800);return;}}
+  else{target.textContent=line.slice(0,--charIdx);if(charIdx===0){deleting=false;lineIdx=(lineIdx+1)%typewriterLines.length;}}
+  setTimeout(typeEffect,deleting?40:70);
+}
+typeEffect();
+
+const cornerLines=['// SRMS CET, Bareilly','// B.Tech CSE 2027','// Node: v20.x','// Status: seeking intern'];
+const cornerEl=document.getElementById('corner-code');
+cornerLines.forEach(l=>{const d=document.createElement('div');d.textContent=l;cornerEl.appendChild(d);});
+
+function animateCount(id,target,suffix=''){
+  const el=document.getElementById(id);
+  const dur=1500,start=performance.now();
+  function tick(now){const p=Math.min((now-start)/dur,1);const ease=1-Math.pow(1-p,3);el.textContent=Math.round(ease*target)+(suffix||'');if(p<1)requestAnimationFrame(tick);}
+  requestAnimationFrame(tick);
+}
+
+const skillsData=[
+  {cat:'Languages',tags:['JavaScript (ES6+)','TypeScript','Java','HTML5','CSS3','SQL']},
+  {cat:'Frameworks & Libraries',tags:['React.js','Node.js','Express.js','Next.js','REST API']},
+  {cat:'Databases',tags:['MongoDB','PostgreSQL','MySQL','Supabase']},
+  {cat:'Cloud & DevOps',tags:['AWS EC2','AWS S3','Git','GitHub','CI/CD','Linux']},
+  {cat:'APIs & Auth',tags:['JWT','OAuth 2.0','OpenAI API','Perplexity API','Brevo','Weather API']},
+  {cat:'Hardware & IoT',tags:['Raspberry Pi','ESP32','Arduino','IoT Sensors']},
+  {cat:'Tools',tags:['Figma','Thunder Client','Postman','Adobe Express','Canva']},
+];
+const sg=document.getElementById('skills-grid');
+skillsData.forEach(s=>{
+  const card=document.createElement('div');card.className='skill-card';
+  card.innerHTML=`<div class="skill-cat">${s.cat}</div><div class="skill-tags">${s.tags.map(t=>`<span class="skill-tag">${t}</span>`).join('')}</div>`;
+  sg.appendChild(card);
+});
+
+const projects=[
+  {num:'01',name:'MyTripAdvisor — AI Travel Platform',link:'https://mytripadvisior.co.in',desc:'Architected and deployed a production AI travel startup that generates dynamic day-wise itineraries with cost estimation. Integrated OpenAI and Perplexity APIs for personalized recommendations, Weather API for 30-day forecasts, and an admin dashboard for user analytics and service workflows.',stack:['Next.js','React.js','Node.js','Supabase','PostgreSQL','OpenAI API','Perplexity API','Weather API','AWS']},
+  {num:'02',name:'SRMS CET Events Portal',link:'https://srmscetrevents.in',desc:'Built a full-stack event registration portal handling 600+ registered users across multiple concurrent events. Implemented JWT + OAuth 2.0 auth, role-based access control (admin/user), and Brevo email API for automated confirmation workflows.',stack:['MongoDB','Express.js','React.js','Node.js','JWT','OAuth 2.0','Brevo API','AWS']},
+  {num:'03',name:'CURABOT — IoT Medicine Dispenser',link:'#',desc:'Engineered an automated medicine dispensing system using Raspberry Pi, servo motors, and sensor arrays with buzzer alerts. Built a MERN dashboard for remote monitoring, medicine scheduling, and real-time hardware state sync via REST APIs.',stack:['Raspberry Pi','Python','IoT Sensors','MongoDB','Express.js','React.js','Node.js']},
+];
+const pgEl=document.getElementById('projects-grid');
+projects.forEach(p=>{
+  const card=document.createElement('div');card.className='project-card';
+  card.innerHTML=`<div class="project-header"><span class="project-num">${p.num}</span><div class="project-links">${p.link!=='#'?`<a class="project-link" href="${p.link}" target="_blank">↗ Live Site</a>`:''}</div></div><div class="project-name">${p.name}</div><div class="project-desc">${p.desc}</div><div class="project-stack">${p.stack.map(t=>`<span class="stack-tag">${t}</span>`).join('')}</div>`;
+  pgEl.appendChild(card);
+});
+
+const experiences=[
+  {date:'Jun 2026 – Present',company:'Ei Systems Technologies (Robowik)',role:'Full-Stack Developer Intern — Ghaziabad, Delhi NCR',points:['Developing production-ready frontend and backend features using MERN stack in a live product environment.','Designing and consuming RESTful APIs; managing codebase with Git and testing with Thunder Client & Postman.','Building reusable React component library, reducing UI duplication across modules.','Collaborating with senior engineers on architecture decisions and sprint deliverables.']},
+  {date:'Oct 2025 – Oct 2026',company:'Verve Club, SRMS Trust Institutions',role:'Vice-President',points:['Led a 20-member cross-functional team for a technical & cultural fest with 600+ participants.','Managed logistics, budgeting, and sponsor coordination end-to-end.']},
+];
+const expEl=document.getElementById('exp-list');
+experiences.forEach(e=>{
+  const div=document.createElement('div');div.className='exp-item';
+  div.innerHTML=`<div class="exp-date">${e.date}</div><div><div class="exp-company">${e.company}</div><div class="exp-role">${e.role}</div><ul class="exp-points">${e.points.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
+  expEl.appendChild(div);
+});
+
+const achievements=[
+  {icon:'🥇',text:'1st Prize — UI Bug Bash, Techvyom\'25 (National-level Techfest, SRMS CET)',badge:'1st Place'},
+  {icon:'🏆',text:'1st Prize — Drone Race, Techvyom\'26 using a self-built drone with custom IoT components',badge:'1st Place'},
+  {icon:'📊',text:'Summer Analytics 2025 — IIT Guwahati (Data Analytics & Machine Learning programme)',badge:'IIT Guwahati'},
+  {icon:'💻',text:'HackerRank: 200+ problems solved across Data Structures, Algorithms, and Java tracks',badge:'200+ Solved'},
+];
+const achEl=document.getElementById('ach-list');
+achievements.forEach(a=>{
+  const div=document.createElement('div');div.className='ach-item';
+  div.innerHTML=`<span class="ach-icon">${a.icon}</span><span class="ach-text">${a.text}</span><span class="ach-badge">${a.badge}</span>`;
+  achEl.appendChild(div);
+});
+
+const fadeEls=document.querySelectorAll('.fade-up');
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1});
+fadeEls.forEach(el=>obs.observe(el));
+
+const statsObs=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting){
+    animateCount('count-users',600,'+');
+    animateCount('count-projects',3);
+    animateCount('count-stack',20,'+');
+    animateCount('count-hacker',200,'+');
+    statsObs.disconnect();
+  }
+},{threshold:0.5});
+const heroStats=document.querySelector('.hero-stats');
+if(heroStats)statsObs.observe(heroStats);
+</script>
 </body>
 </html>
